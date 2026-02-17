@@ -1,10 +1,9 @@
-import { createClient } from 'redis';
+import Redis from 'ioredis';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const redis = createClient({
-  url: process.env.UPSTASH_REDIS_URL,
-});
+console.log('UPSTASH_REDIS_URL', process.env.UPSTASH_REDIS_URL);
 
-await redis.set('test', 'Hello, Redis!');
+export const redis = new Redis(process.env.UPSTASH_REDIS_URL);
+// await client.set('foo', 'bar');
